@@ -17,6 +17,12 @@ func main() {
 		return
 	}
 	userNote.Display()
+	err = userNote.Save()
+	if err != nil {
+		fmt.Print("Saving data failed!")
+		return
+	}
+	fmt.Println("Saving the note")
 }
 
 func getNoteDate() (string, string) {
@@ -34,7 +40,6 @@ func getUserInput(prompt string) string {
 		return ""
 	}
 
-	text = strings.TrimPrefix(text, "\n")
-	text = strings.TrimPrefix(text, "\r")
+	text = strings.TrimSpace(text)
 	return text
 }
